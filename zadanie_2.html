@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" href="main.css">
+    
+    </head>
+    
+        <script>
+        
+       
+
+        const add_option = ()=>{
+            const select = document.getElementById("select")
+            const input = document.getElementById("input")
+            const regex = /[a-z]+@[a-z]+\.[a-z]+/
+            console.log(input)
+            let input_value = input.value
+            let result = input_value.match(regex)
+            console.log(result)
+            if (result!=null){
+                let option = document.createElement("option")
+                option.innerHTML = input_value
+
+                select.appendChild(option)
+            }
+            else{
+                alert("Email address uncororrect")
+            }
+        }
+
+
+        const delete_option = (_option)=>{
+            const select = document.getElementById("select")
+            const option = document.getElementById("option_1")
+            console.log(select.options[0])
+            console.log(option)
+            select.remove(select.selectedIndex)
+            console.log(select.options)
+            
+        }
+
+
+    
+
+        </script>
+
+
+    <body>
+       <input id="input">
+       <button onclick="add_option()">Добавить</button>
+       <button onclick="delete_option()">Удалить</button>
+
+       <select id="select">
+       </select>
+    
+    </body>
+
+
+</html>
