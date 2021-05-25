@@ -1,13 +1,13 @@
 <!doctype html>
 <html>
     <head>
-        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="zadanie_2.css">
     
     </head>
     
         <script>
         
-       
+       const quantity_email_active = 0
 
         const add_option = ()=>{
             const select = document.getElementById("select")
@@ -39,19 +39,59 @@
             
         }
 
+        var quantity_email = 0
 
-    
+        
+       const add_email = (event)=>{
+            if (event.which === 13){
+                const input = document.getElementById("input_email")
+                const regex = /[a-z]+@[a-z]+\.[a-z]+/
+                const input_value = input.value
+                const result = input_value.match(regex)
+                if (result!=null){
+                    const element_container = document.getElementById("container_id")
+                    const element_email = document.createElement("div")
+                    element_email.id = "email_id_" + quantity_email
+                    element_email.classList.add('email');
+                    element_email.innerHTML = "<input type = 'radio' class='email_input'><span class = 'email_text'>" + input_value + "</span><button class='email_button' onClick = 'delete_email(" + quantity_email + ")'>✖</button>"
+                    console.log(element_email)
+                    element_container.appendChild(element_email)
+                    console.log(element_container)
+                    quantity_email = quantity_email + 1
+                    quantity_email_active = quantity_email_active + 1
+                    console.log(quantity_email)
+                }
+                else{
+                    alert("Email address uncororrect")
+                }
 
+
+                
+            }
+        }
+
+        const delete_email = (_id)=>{
+            console.log("email_id_" + _id)
+            let email_element = document.getElementById("email_id_" + _id)
+            console.log(email_element)
+            email_element.remove()
+            quantity_email_active = quantity_email_active - 1
+        }
+        
+        const test = ()=>{
+            console.log(this)
+        }
+        
         </script>
 
 
     <body>
-       <input id="input">
-       <button onclick="add_option()">Добавить</button>
-       <button onclick="delete_option()">Удалить</button>
-
-       <select id="select">
-       </select>
+       <div class = "container" id = "container_id">
+            <h1 class="h1">Email list</h1>
+            <input id = "input_email" class="input" placeholder="Type here to add new Email" onkeyup="add_email(event)">
+            
+            
+       </div>
     
     </body>
 

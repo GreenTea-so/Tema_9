@@ -18,27 +18,20 @@
 
             if (result!=null){
                 result[0] = result[0].slice(result[0].indexOf("#") + 1, result[0].length)
-        
                 string = string.slice(0, result.index) + "<h1>" + result[0] + "</h1>" + string.slice(result.index + result[0].length+2, string.length)
                 output.innerHTML = string;
             }
 
-
-        }
-
-        const change_bord = () => {
-            const input = document.getElementById('input_2');
-            const output = document.getElementById('output_2');
-            output.innerHTML = input.value
-            let string = output.innerHTML
-            let regex= /[*][*]\w+[*][*]/
-            let result = string.match(regex)
+            string = output.innerHTML
+            regex= /[*][*]\w+[*][*]/
+            result = string.match(regex)
     
             if (result!=null){
                 result[0] = result[0].slice(2, result[0].length-2)
                 string = string.slice(0, result.index) + "<b>" + result[0] + "</b>" + string.slice(result.index + result[0].length+4, string.length)
                 output.innerHTML = string;
             }
+
         }
 
     </script>
@@ -48,7 +41,5 @@
             <input onkeyup="change_h()" id="input">
             <p id="output"></p>
         </div>
-        <input onkeyup="change_bord()" id="input_2">
-        <p id="output_2"></p>
     </body>
 </html>
